@@ -1,4 +1,4 @@
-# Customer Support Intelligence
+# Zentrix AI
 
 AI-based application for customer-support messages: it understands the customer
 problem (sentiment, topic, urgency, summary) and detects security threats

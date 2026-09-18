@@ -41,8 +41,11 @@ $("#btn-sample").addEventListener("click", () => {
 });
 
 $("#btn-analyze").addEventListener("click", async () => {
+  const btn = $("#btn-analyze");
   const text = $("#message-input").value.trim();
   if (!text) { showToast("Paste a message first"); return; }
+  btn.classList.add("is-loading");
+  btn.disabled = true;
   try {
     const res = await fetch("/api/analyze", {
       method: "POST",
@@ -54,6 +57,9 @@ $("#btn-analyze").addEventListener("click", async () => {
     refreshDashboard();
   } catch (e) {
     showToast("Analysis failed: " + e.message);
+  } finally {
+    btn.classList.remove("is-loading");
+    btn.disabled = false;
   }
 });
 

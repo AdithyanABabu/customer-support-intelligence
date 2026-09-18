@@ -13,7 +13,7 @@ from backend.insights import combine_analysis
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
 
-app = FastAPI(title="Customer Support Intelligence", version="1.0.0")
+app = FastAPI(title="Zentrix AI", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
