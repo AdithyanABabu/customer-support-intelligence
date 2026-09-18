@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Support Intelligence</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">AI</span>
+      <div>
+        <h1>Customer Support Intelligence</h1>
+        <p>Understand the customer. Detect the threat.</p>
+      </div>
+    </div>
+    <nav class="tabs">
+      <button class="tab active" data-tab="analyze">Analyze Message</button>
+      <button class="tab" data-tab="dashboard">Dashboard &amp; Insights</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="tab-analyze" class="panel">
+      <div class="analyze-grid">
+        <div class="card input-card">
+          <h2>Paste a customer message</h2>
+          <textarea id="message-input" rows="10"
+            placeholder="From: support@paypa1-security.com&#10;&#10;Your account has been suspended. Verify your account within 30 minutes:&#10;http://paypa1-verify-example.com&#10;&#10;Enter your password and OTP to restore access."></textarea>
+          <div class="row">
+            <button id="btn-analyze" class="btn primary">Analyze Message</button>
+            <button id="btn-sample" class="btn">Load sample</button>
+            <button id="btn-clear" class="btn ghost">Clear</button>
+          </div>
+          <p class="hint">Supports raw email text with From: / Subject: headers, or plain customer text.</p>
+        </div>
+
+        <div id="result-card" class="card result-card hidden">
+          <div class="result-header">
+            <h2>Analysis Result</h2>
+            <span id="risk-badge" class="badge">-</span>
+          </div>
+          <div id="result-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-dashboard" class="panel hidden">
+      <div class="stat-row" id="stat-cards"></div>
+
+      <div class="dash-grid">
+        <div class="card">
+          <h2>Message topics</h2>
+          <div id="topic-chart" class="bar-list"></div>
+        </div>
+        <div class="card">
+          <h2>Sentiment mix</h2>
+          <div id="sentiment-chart" class="bar-list"></div>
+          <h2 class="mt">Urgency &amp; risk</h2>
+          <div id="urgency-chart" class="bar-list"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Business insights</h2>
+        <div id="insight-list" class="insight-list"></div>
+      </div>
+
+      <div class="card">
+        <h2>Recent messages</h2>
+        <table id="history-table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Topic</th>
+              <th>Sentiment</th>
+              <th>Urgency</th>
+              <th>Phishing</th>
+              <th>Risk</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p id="history-empty" class="hint">No messages analyzed yet. Go to Analyze and run the sample to seed the dashboard.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Customer Support Intelligence &middot; FastAPI + offline rule-based NLP
+  </footer>
+</div>
+<div id="toast" class="toast hidden"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>
